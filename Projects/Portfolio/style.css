@@ -38,3 +38,9 @@ footer {
 a.highlight:hover {
   background-color: green;
 }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
