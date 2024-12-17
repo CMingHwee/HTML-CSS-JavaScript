@@ -34,3 +34,7 @@ footer {
   width: 100%;
   text-align: center;
 }
+
+a.highlight:hover {
+  background-color: green;
+}
