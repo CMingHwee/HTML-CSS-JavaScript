@@ -13,3 +13,15 @@ else {
  navbar.classList.remove("sticky");
   } //when scroll back up, remove sticky class from header
 }
+
+function toggleCode(codeId) {
+  const codeBox = document.getElementById(codeId);
+  //if display is "none" or ""
+  if (codeBox.style.display === "none" || codeBox.style.display == "") {
+               codeBox.style.display = "block"; //set display to "block" which would unhide tbe code box
+            } 
+  else {
+                codeBox.style.display = "none"; //set display to "none" to hide code box
+ 
+            }
+        }
