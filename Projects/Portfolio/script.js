@@ -14,15 +14,16 @@ else {
   } //when scroll back up, remove sticky class from header
 }
 
-function toggleCode(codeId) {
+function toggleCode(codeId, button) {
   const codeBox = document.getElementById(codeId);
   //if display is "none" or ""
   if (codeBox.style.display === "none" || codeBox.style.display == "") {
-               codeBox.style.display = "block"; //set display to "block" which would unhide tbe code box
+               codeBox.style.display = "block"; //set display to "block"
+button.innerHTML = "Click to Hide Code";//change text to "Click to Hide Code" when button is clicked
             } 
   else {
-                codeBox.style.display = "none"; //set display to "none" to hide code box
- 
+                codeBox.style.display = "none";
+button.innerHTML = "Click to Show Code";//change text back to "Click to Show Code" when button is clicked again
             }
         }
         
