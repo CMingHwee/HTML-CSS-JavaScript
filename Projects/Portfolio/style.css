@@ -73,3 +73,32 @@ img {
     color: #888;
     cursor: pointer;
 }
+
+.code-container {
+  position: relative;  
+}
+
+.content {
+  display: none;
+  padding: 15px;
+  background-color: #fafafa;
+  border-left: 2px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  
+}
+
+.accordion-btn {
+  background-color: #f1f1f1;
+  color: #444;
+  cursor: pointer;
+  padding: 12px 20px; 
+  width: 100%;
+  text-align: left;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s ease; 
+}
