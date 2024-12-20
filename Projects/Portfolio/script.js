@@ -25,3 +25,15 @@ function toggleCode(codeId) {
  
             }
         }
+        
+function toggleAccordion(Id) {
+  const content = document.getElementById(Id);
+  //if display is "none" or ""
+  if (content.style.display === "none" || content.style.display == "") {
+               content.style.display = "block"; //set display to "block"
+            } 
+  else {
+                content.style.display = "none"; //
+ 
+            }
+        }
