@@ -64,9 +64,9 @@ class="highlight">Certificates</a>
         </ul>
          <a href="https://github.com/CMingHwee/Learning-Python/tree/main/Mini%20Projects/Rock%20Paper%20Scissors%20Game">View on GitHub</a>
          <br><br>
-         <a href="javascript:void(0);" onclick="toggleCode('code1')">Click to Show Code</a>
+         <a href="javascript:void(0);" id="btn1" onclick="toggleCode('code1', this)">Click to Show Code</a>
          <div id="code1" class="code-box">
-	   <button class="close-btn" onclick="toggleCode('code1')">&times;</button>
+	   <button class="close-btn" onclick="toggleCode('code1', document.getElementById('btn1'))">&times;</button>
            <pre> <code class="language-python">
 import random
 import time 
@@ -181,9 +181,9 @@ else:
         </ul>
         <a href="https://github.com/CMingHwee/Learning-Python/tree/main/Mini%20Projects/Personal%20Finance%20Tracker">View on GitHub</a>
          <br><br>
-         <a href="javascript:void(0);" onclick="toggleCode('code2')">Click to Show Code</a>
+         <a href="javascript:void(0);" id="btn2" onclick="toggleCode('code2', this)">Click to Show Code</a>
          <div id="code2" class="code-box">
-        <button class="close-btn" onclick="toggleCode('code2')">&times;</button>
+        <button class="close-btn" onclick="toggleCode('code2', document.getElementById('btn2'))">&times;</button>
            <pre> <code class="language-python">
 from tkinter import *
 from tkinter import messagebox
