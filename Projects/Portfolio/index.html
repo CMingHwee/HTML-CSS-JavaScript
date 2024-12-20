@@ -52,42 +52,20 @@ class="highlight">Certificates</a>
 
 	<section id="projects">
  	  <h2>My Projects</h2>
-     <div> 
-        <h3>Rock Paper Scissors Game (Python)</h3>
-        <p>Simple game of Rock Paper Scissors where the player plays against an AI! AI behaviour changes based on difficulty chosen! Scores will be tracked to determine the winner.</p>
-  
-         <a href="javascript:void(0);" onclick="toggleCode('code1')">Click to Show Code</a>
-         <br><br>
+<div class="code-container">
+        <button class="accordion-btn" onclick="toggleAccordion('1')">Rock Paper Scissors Game</button>
+        <div id="1" class="content">
+        <p>Simple game of Rock Paper Scissors where the player plays against an AI!</p>
+        <img src="rps.jpeg">
+        <h3> Features </h3>
+        <ul> 
+           <li>Difficulty Levels</li>        <li>Score Tracking</li>
+           <li>Adaptive AI</li>
+        </ul>
          <a href="https://github.com/CMingHwee/Learning-Python/tree/main/Mini%20Projects/Rock%20Paper%20Scissors%20Game">View on GitHub</a>
-    
-       <h3>Personal Finance Tracker (Python)</h3>
-    </div>
-        <p>Simple finance tracker to track your daily expense! Enter the expense, date and select a category to update your expense into the app. Total expenses will be displayed. User will also be able to delete expenses and filter them by category.</p>
-         <a href="javascript:void(0);" onclick="toggleCode('code2')">Click to Show Code</a>
-         <br><br> 
-        <a href="https://github.com/CMingHwee/Learning-Python/tree/main/Mini%20Projects/Personal%20Finance%20Tracker">View on GitHub</a>
-	</section>
-	
-	<section id="certificates">
-		<h2>Certificates</h2>
-		<p>
-		<img src="images/os.jpeg" alt="Windows OS certificate">
-		Microsoft Operating System Fundamentals
-		</p>
-		<p>
-		<img src="images/network.jpeg" alt="Networking Certificate">
-		Networking Fundamentals
-		</p>
-	</section>
-	   
-	
-
-	<section id="contact">
-      <h2>Contact</h2>
-      <p>Email me at: <a href="mailto:chuaminghweesg@gmail.com">chuaminghweesg@gmail.com</a></p>
-	</section>
-	  
-	   <div id="code1" class="code-box">
+         <br><br>
+         <a href="javascript:void(0);" onclick="toggleCode('code1')">Click to Show Code</a>
+         <div id="code1" class="code-box">
 	   <button class="close-btn" onclick="toggleCode('code1')">&times;</button>
            <pre> <code class="language-python">
 import random
@@ -187,7 +165,24 @@ else:
     print("Thanks for playing!")
             </code> </pre>
         </div>
-     <div id="code2" class="code-box">
+     </div>
+  </div>
+       <div class="code-container">
+       <button class="accordion-btn" onclick="toggleAccordion('2')">Personal Finance Tracker</button>
+        <div id="2" class="content">
+  
+        <p>Simple finance tracker app to track your daily expense!</p>
+         <img src="tracker.jpeg">
+        <h3> Features </h3>
+        <ul> 
+           <li>Expense Logging</li>             <li>File Saving</li>
+           <li>Category Filter</li>
+           <li>Dynamic Feedback</li>
+        </ul>
+        <a href="https://github.com/CMingHwee/Learning-Python/tree/main/Mini%20Projects/Personal%20Finance%20Tracker">View on GitHub</a>
+         <br><br>
+         <a href="javascript:void(0);" onclick="toggleCode('code2')">Click to Show Code</a>
+         <div id="code2" class="code-box">
         <button class="close-btn" onclick="toggleCode('code2')">&times;</button>
            <pre> <code class="language-python">
 from tkinter import *
@@ -469,7 +464,31 @@ window.mainloop()  # keep the window running so that it will not close after add
 
             </code> </pre>
         </div>
+       </div>
+     </div>
+	</section>
 	
+	<section id="certificates">
+		<h2>Certificates</h2>
+		<p>
+		<img src="images/os.jpeg" alt="Windows OS certificate">
+		Microsoft Operating System Fundamentals
+		</p>
+		<p>
+		<img src="images/network.jpeg" alt="Networking Certificate">
+		Networking Fundamentals
+		</p>
+	</section>
+	   
+	
+
+	<section id="contact">
+      <h2>Contact</h2>
+      <p>Email me at: <a href="mailto:chuaminghweesg@gmail.com">chuaminghweesg@gmail.com</a></p>
+	</section>
+	  
+	   
+     
 <footer>
   <p>Designed and built by Chua Ming Hwee</p>
   <div>
