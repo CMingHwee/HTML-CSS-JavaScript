@@ -1,57 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+   <meta charset="UTF-8">    
+   <meta name="viewport" content="width=device-width, initial-scale=0.5"> 
    <title> My Portfolio </title>
    <script src="script.js" async></script>
    <link rel="stylesheet" href="style.css">
    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/themes/prism.css" rel="stylesheet" />
    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/prism.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-python.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
 </head>
 
 <body>
    <header>
       <h1>Welcome to my Portfolio</h1>
-      <nav>
+      <div class="topnav">
         <a href="#about" class="highlight">About</a>
         <a href="#skills" class="highlight">Skills</a>
         <a href="#projects" class="highlight">Projects</a> 
         <a href="#certificates"
-class="highlight">Certificates</a>
-        <a href="#contact" class="highlight">Contact</a>
-      </nav>
+class="highlight">Certificates</a> 
+<div class="topnav-right">
+        <a href="https://github.com/CMingHwee" target="_blank" aria-label="GitHub Profile">
+    <img src="images/github.png" 
+         alt="GitHub" 
+         style="width: 30px; height: 30px;">
+</a> 
+        <a href="https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav" target="_blank" aria-label="LinkedIn Profile">
+    <img src="images/linkedin.png" 
+         alt="LinkedIn" 
+         style="width: 30px; height: 30px;">
+</a>
+</div>
+      </div>
     </header>
+<section id="hero">
+    <div class="photo">
+        <img src="images/photo.png" alt="Your Name">
+    </div>
+    <div class="intro">
+        <h1 style="font-size: 50px">My name is Chua Ming Hwee</h1>
+    <a href="#contact" class="button">Contact</a>
+    </div>
+</section>
 
-	<section id="about">
-   	<h2>About Me</h2>
+<section id="about">
+    <h2>About Me</h2>
       <p>Hi, I'm Chua Ming Hwee, a passionate learner currently diving into web development. I'm learning HTML, CSS, and JavaScript to build beautiful and functional websites.</p>
-		<p>I enjoy creating small projects to improve my skills everday. I’ve built several projects, including personal portfolios, rock-paper-scissors game, and a personal finance tracker. Through these, I’ve honed my problem-solving and design skills.</p>
-		<p>I'm excited to grow as a developer and bring ideas to life through code. When I'm not coding, I enjoy drawing and gaming.</p>
-		<p>I would love you to check out the <a href="#projects">projects</a> I've built so far.</p>
-	</section>
-	
-	<section id="skills">
+<p>I enjoy creating small projects to improve my skills everday. I’ve built several projects, including personal portfolios, rock-paper-scissors game, and a personal finance tracker. Through these, I’ve honed my problem-solving and design skills.</p>
+<p>I'm excited to grow as a developer and bring ideas to life through code. When I'm not coding, I enjoy drawing and gaming.</p>
+<p>I would love you to check out the <a href="#projects">projects</a> I've built so far.</p>
+</section>
+
+<section id="skills">
       <h2>Skills</h2>
       <ul>
         <li>Microsoft Excel</li>
         <li>Microsoft Word</li>
         <li>Microsoft PowerPoint</li>
         <li>HTML</li>
-   	  <li>CSS</li>
+     <li>CSS</li>
         <li>JavaScript</li>
-  		  <li>Python</li>
- 	     <li>C#</li>
-  	     <li>SQL Database</li>
-  	     <li>Git & GitHub</li>
-   	  <li>Bitbucket</li>
- 	   </ul>
-	</section>
+   <li>Python</li>
+      <li>C#</li>
+      <li>SQL Database</li>
+      <li>Git & GitHub</li>
+     <li>Bitbucket</li>
+    </ul>
+</section>
 
 
-	<section id="projects">
- 	  <h2>My Projects</h2>
+<section id="projects">
+   <h2>My Projects</h2>
 <div class="code-container">
         <button class="accordion-btn" onclick="toggleAccordion('1')">Rock Paper Scissors Game</button>
         <div id="1" class="content">
@@ -66,7 +87,7 @@ class="highlight">Certificates</a>
          <br><br>
          <a href="javascript:void(0);" id="btn1" onclick="toggleCode('code1', this)">Click to Show Code</a>
          <div id="code1" class="code-box">
-	   <button class="close-btn" onclick="toggleCode('code1', document.getElementById('btn1'))">&times;</button>
+  <button class="close-btn" onclick="toggleCode('code1', document.getElementById('btn1'))">&times;</button>
            <pre> <code class="language-python">
 import random
 import time 
@@ -466,28 +487,139 @@ window.mainloop()  # keep the window running so that it will not close after add
         </div>
        </div>
      </div>
-	</section>
-	
-	<section id="certificates">
-		<h2>Certificates</h2>
-		<p>
-		<img src="images/os.jpeg" alt="Windows OS certificate"> <br>
-		Microsoft Operating System Fundamentals
-		</p>
-		<p>
-		<img src="images/network.jpeg" alt="Networking Certificate"> <br>
-		Networking Fundamentals
-		</p>
-	</section>
-	   
-	
 
-	<section id="contact">
+<div class="code-container">
+       <button class="accordion-btn" onclick="toggleAccordion('3')">Hangman Game</button>
+        <div id="3" class="content">
+  
+        <p>Simple Hangman Game!</p>
+         <img src="images/hangman.jpg" alt="Hangman Game">
+        <h3> Features </h3>
+        <ul> 
+           <li>Randomized word from Database</li>             <li>Tracked Attempts</li>
+           <li>Case-insensitive Guessing</li>
+        </ul>
+        <a href="https://github.com/CMingHwee/C-Sharp/tree/main/Hangman">View on GitHub</a>
+         <br><br>
+         <a href="javascript:void(0);" id="btn3" onclick="toggleCode('code3', this)">Click to Show Code</a>
+         <div id="code3" class="code-box">
+        <button class="close-btn" onclick="toggleCode('code3', document.getElementById('btn3'))">&times;</button>
+           <pre> <code class="language-csharp">
+using System;
+using Microsoft.Data.SqlClient;
+
+class HangmanGame
+{
+    static void Main()
+    {
+        string connectionString = "data source=DESKTOP-NSNRK1I;initial catalog=HangmanDB;TrustServerCertificate=True;trusted_connection=true"; //connect to database
+        string wordToGuess = GetRandomWordFromDatabase(connectionString); //get a random word from the database
+        string maskedWord = new string('_', wordToGuess.Length); //string of underscores equal to length of wordToGuess
+        int attemptsLeft = 6; 
+        bool isWordGuessed = false;
+        char[] guessedLetters = new char[wordToGuess.Length]; //track guessed letters
+        Console.WriteLine("Welcome to Hangman!");
+        Console.WriteLine("Try to guess the word, one letter at a time.");
+        Console.WriteLine($"The word has {wordToGuess.Length} letters.");
+
+        while (attemptsLeft > 0 && !isWordGuessed)
+        {
+            Console.WriteLine($"\nWord: {maskedWord}");
+            Console.WriteLine($"Attempts left: {attemptsLeft}");
+            Console.Write("Enter a letter: ");
+            char guess = Console.ReadKey().KeyChar;
+            Console.WriteLine();//read key press and assign it to guess and then output a blank line for readibility 
+
+            if (wordToGuess.Contains(guess))
+            {
+                Console.WriteLine("Correct!");
+                for (int i = 0; i < wordToGuess.Length; i++)
+                {
+                    if (wordToGuess[i] == guess)
+                        guessedLetters[i] = guess;
+                } //reveal letter when guessed correctly
+            }
+            else
+            {
+                Console.WriteLine("Wrong guess.");
+                attemptsLeft--;
+            } //minus one attempt if guessed wrongly
+
+            maskedWord = UpdateMaskedWord(wordToGuess, guessedLetters);
+            isWordGuessed = !maskedWord.Contains('_');
+        }
+
+        if (isWordGuessed)
+        {
+            Console.WriteLine($"\nCongratulations! You guessed the word: {wordToGuess}");
+        }
+        else
+        {
+            Console.WriteLine($"\nGame Over! The word was: {wordToGuess}");
+        }
+    }
+
+    static string GetRandomWordFromDatabase(string connectionString)
+    {
+        string randomWord = string.Empty;
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            string query = "SELECT TOP 1 Word FROM Words ORDER BY NEWID()"; //sort words by random order and then selecting the top result
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    randomWord = reader["Word"].ToString(); //retrieve Word and assign to randomWord
+                }
+            }
+        }
+
+        return randomWord.ToLower(); //ensure the word is lowercase for comparison
+    }
+
+    static string UpdateMaskedWord(string word, char[] guessedLetters)
+    {
+        char[] updatedMaskedWord = new char[word.Length];
+
+        for (int i = 0; i < word.Length; i++)
+        {
+            updatedMaskedWord[i] = guessedLetters[i] == '\0' ? '_' : guessedLetters[i]; //turn unguessed  letters into underscores
+        }
+
+        return new string(updatedMaskedWord);
+    }
+}
+
+            </code> </pre>
+        </div>
+       </div>
+     </div>
+</section>
+
+<section id="certificates">
+<h2>Certificates</h2>
+<p>
+<img src="images/os.jpeg" alt="Windows OS certificate"> <br>
+Microsoft Operating System Fundamentals
+</p>
+<p>
+<img src="images/network.jpeg" alt="Networking Certificate"> <br>
+Networking Fundamentals
+</p>
+</section>
+  
+
+
+<section id="contact">
       <h2>Contact</h2>
       <p>Email me at: <a href="mailto:chuaminghweesg@gmail.com">chuaminghweesg@gmail.com</a></p>
-	</section>
-	  
-	   
+</section>
+ 
+  
      
 <footer>
   <p>Designed and built by Chua Ming Hwee</p>
@@ -499,3 +631,7 @@ window.mainloop()  # keep the window running so that it will not close after add
 
 </body>
 </html>
+
+
+
+
