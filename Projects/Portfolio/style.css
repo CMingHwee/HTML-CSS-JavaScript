@@ -5,16 +5,10 @@ body {
 }
 
 header {
+  display: flex;
   background: #333;
   color: #fff;
-  padding: 10px 0;
-  text-align: center;
-}
-
-header nav a {
-  color: #fff;
-  margin: 0 10px;
-  text-decoration: none;
+  padding: 10px 0; 
 }
 
 section {
@@ -25,8 +19,29 @@ section {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+h1 {
+font-size: 22px;
+margin: 10px;
+}
+
 h2 {
   color: #fff;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav-right {
+  position: absolute;
+  top: 0;
+  right: 0; 
+  padding: 10px;
 }
 
 footer {
@@ -41,7 +56,7 @@ a {
 }
 
 a.highlight:hover {
-  background-color: #0f9;
+  background-color: #FF0000;
 }
 
 .sticky {
@@ -114,4 +129,30 @@ img {
 img {
   width: 30%;
   height: auto;
+}
+
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.photo img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+.intro {
+    margin-left: 30px;
+}
+.button {
+    background-color: #D3D3D3;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 10px;
 }
