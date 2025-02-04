@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">    
+   <meta name="viewport" content="width=device-width, initial-scale=0.5"> 
+   <title> My Portfolio </title>
+   <script src="script.js" async></script>
+   <link rel="stylesheet" href="style.css">
+   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/themes/prism.css" rel="stylesheet" />
+   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/prism.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-python.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-csharp.min.js"></script>
+</head>
+
+<body>
+   <header>
+      <h1>Welcome to my Portfolio</h1>
+      <div class="topnav">
+        <a href="#about" class="highlight">About</a>
+        <a href="#skills" class="highlight">Skills</a>
+        <a href="#projects" class="highlight">Projects</a> 
+        <a href="#certificates"
+class="highlight">Certificates</a> 
+<div class="topnav-right">
+        <a href="https://github.com/CMingHwee" target="_blank" aria-label="GitHub Profile">
+    <img src="images/github.png" 
+         alt="GitHub" 
+         style="width: 30px; height: 30px;">
+</a> 
+        <a href="https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav" target="_blank" aria-label="LinkedIn Profile">
+    <img src="images/linkedin.png" 
+         alt="LinkedIn" 
+         style="width: 30px; height: 30px;">
+</a>
+</div>
+      </div>
+    </header>
+<section id="hero">
+    <div class="photo">
+        <img src="images/photo.png" alt="Your Name">
+    </div>
+    <div class="intro">
+        <h1 style="font-size: 50px">My name is Chua Ming Hwee</h1>
+    <a href="#contact" class="button">Contact</a>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Me</h2>
+      <p>Hi, I'm Chua Ming Hwee, a passionate learner currently diving into web development. I'm learning HTML, CSS, and JavaScript to build beautiful and functional websites.</p>
+<p>I enjoy creating small projects to improve my skills everday. I’ve built several projects, including personal portfolios, rock-paper-scissors and hangman game, and a personal finance tracker. Through these, I’ve honed my problem-solving and design skills.</p>
+<p>I'm excited to grow as a developer and bring ideas to life through code. When I'm not coding, I enjoy drawing and gaming.</p>
+<p>I would love you to check out the <a href="#projects">projects</a> I've built so far.</p>
+</section>
+
+<section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>Microsoft Excel</li>
+        <li>Microsoft Word</li>
+        <li>Microsoft PowerPoint</li>
+        <li>HTML</li>
+     <li>CSS</li>
+        <li>JavaScript</li>
+   <li>Python</li>
+      <li>C#</li>
+      <li>SQL Database</li>
+      <li>Git & GitHub</li>
+     <li>Bitbucket</li>
+    </ul>
+</section>
+
+
+<section id="projects">
+   <h2>My Projects</h2>
+<div class="code-container">
+        <button class="accordion-btn" onclick="toggleAccordion('1')">Rock Paper Scissors Game (Python)</button>
+        <div id="1" class="content">
+        <p>Simple game of Rock Paper Scissors where the player plays against an AI!</p>
+        <img src="images/rps.jpg" alt="Rock Paper Scissors Game">
+        <h3> Features </h3>
+        <ul> 
+           <li>Difficulty Levels</li>        <li>Score Tracking</li>
+           <li>Adaptive AI</li>
+        </ul>
+         <a href="https://github.com/CMingHwee/Learning-Python/tree/main/Mini%20Projects/Rock%20Paper%20Scissors%20Game">View on GitHub</a>
+         <br><br>
+         <a href="javascript:void(0);" id="btn1" onclick="toggleCode('code1', this)">Click to Show Code</a>
+         <div id="code1" class="code-box">
+  <button class="close-btn" onclick="toggleCode('code1', document.getElementById('btn1'))">&times;</button>
+           <pre> <code class="language-python">
+import random
+import time 
+
+move_history = [] #empty list to track move history
+choice = ["rock","paper","scissors"]
+wins, losses, ties = 0,0,0 #user win lose tie record starts at 0
+p_rock , p_paper, p_scissors = 0.33, 0.33, 0.33 #probability of each move bring thrown
+difficulties = ["easy", "medium", "hard"] 
+
+def select_difficulty(): #prompt user to select a valid difficulty 
+    while True:
+        difficulty = input("Select a difficulty: Easy, Medium, or Hard ").lower()
+        if difficulty in difficulties:
+            return difficulty
+        else:
+            print("Please enter a valid difficulty (Easy, Medium, or Hard)")
+        
+def RPS_game(difficulty):
+    global wins, losses, ties
+    global p_rock, p_paper, p_scissors
+
+    while True:
+        move = input("Rock, Paper, or Scissors ").lower()
+        if move in choice:  #prompt user for input until user input one of the choices
+            move_history.append(move) #add move to move history
+            if len(move_history) > 10:
+                move_history.pop(0) #move history caps at 10
+            break
+        else:
+            print("Please enter a valid move")
+            
+    most_used = max(move_history, key= move_history.count) #store the most used move in move history
+    
+    if difficulty == "easy":
+        p_paper, p_rock, p_scissors = 0.33, 0.33, 0.33 #Easy difficulty, Computer randomly chooses moves
+    elif difficulty == "medium": #Medium difficulty, Computer adapts to user's past moves
+        if most_used == "rock":
+            p_paper += 0.05 #increase probability of ai throwing paper if user's most used move is rock
+            p_rock -= 0.02 #decrease probability of other moves to make up for the increased probability of paper
+            p_scissors -= 0.02
+        elif most_used == "paper":
+            p_scissors += 0.05
+            p_rock -= 0.02
+            p_paper -= 0.02
+        elif most_used == "scissors":
+            p_rock += 0.05
+            p_paper -= 0.02
+            p_scissors-= 0.02
+    elif difficulty == "hard": #Hard difficulty, Computer adapts more aggressively to user's past moves
+        if most_used == "rock":
+            p_paper += 0.1 
+            p_rock -= 0.05 
+            p_scissors -= 0.05
+        elif most_used == "paper":
+            p_scissors += 0.1
+            p_rock -= 0.05
+            p_paper -= 0.05
+        elif most_used == "scissors":
+            p_rock += 0.1
+            p_paper -= 0.05
+            p_scissors -= 0.05
+            
+    p_rock = max(0, min(1, p_rock)) #ensure the probability of each move does not go negative or exceed 1
+    p_paper = max(0, min(1, p_paper))
+    p_scissors = max(0, min(1, p_scissors))
+  
+    print("thinking...") #Simulate the opponent thinking
+    time.sleep(1)  # Adds a 1-second delay
+
+    opponent = random.choices(choice, weights =[p_rock, p_paper, p_scissors]) #assign a random choice in the list to opponent, with the ability to throw out moves based on user's behavior
+    print(f"Opponent Move: {opponent[0]}")
+   
+    
+    if move == opponent[0]:
+        ties+=1
+        print("It's a Tie!")
+    elif (move == "rock" and opponent[0] == "scissors") or \
+         (move == "paper" and opponent[0] == "rock") or \
+         (move == "scissors" and opponent[0] == "paper"):
+        wins+=1
+        print("You Win!")
+    else:
+        losses+=1
+        print("You Lose!")
+    print(f"Score: Win: {wins} Lose: {losses} Tie: {ties}")   
+
+difficulty = select_difficulty()
+RPS_game(difficulty)
+
+
+while input("Do you want to play again? (y/n): ").lower() == "y": #ask user if they want to play again
+    RPS_game(difficulty)
+else:
+    print(f"Final score: Win {wins} Lose: {losses} Tie: {ties}")
+    print("Thanks for playing!")
+            </code> </pre>
+        </div>
+     </div>
+  </div>
+       <div class="code-container">
+       <button class="accordion-btn" onclick="toggleAccordion('2')">Personal Finance Tracker (Python)</button>
+        <div id="2" class="content">
+  
+        <p>Simple finance tracker app to track your daily expense!</p>
+         <img src="images/tracker.jpg" alt="Finance Tracker App">
+        <h3> Features </h3>
+        <ul> 
+           <li>Expense Logging</li>             <li>File Saving</li>
+           <li>Category Filter</li>
+           <li>Dynamic Feedback</li>
+        </ul>
+        <a href="https://github.com/CMingHwee/Learning-Python/tree/main/Mini%20Projects/Personal%20Finance%20Tracker">View on GitHub</a>
+         <br><br>
+         <a href="javascript:void(0);" id="btn2" onclick="toggleCode('code2', this)">Click to Show Code</a>
+         <div id="code2" class="code-box">
+        <button class="close-btn" onclick="toggleCode('code2', document.getElementById('btn2'))">&times;</button>
+           <pre> <code class="language-python">
+from tkinter import *
+from tkinter import messagebox
+from datetime import datetime
+import os
+import csv
+
+window = Tk()  # instantiate an instance of window
+window.title("Personal Fiance Tracker")  # title of the window
+window.geometry("500x600")  # set window size
+
+window.config(bg="#f4f4f9")  # light grey background
+
+header_label = Label(window,
+                     text="Personal Finance Tracker",
+                     font=("Arial", 16, "bold"),
+                     bg="#f4f4f9",
+                     fg="#4CAF50")  # header label
+header_label.pack(pady=20)
+
+# create a label and entry field for the expense amount
+label = Label(window,
+              text="Expense Amount: ",
+              font=("Arial", 12),
+              bg="#f4f4f9")
+label.pack()  # add the label to the window
+expense = Entry(window,
+                font=("Arial", 12))  # create an entry field for the user to input the expense amount
+expense.pack()  # add the entry field to the window
+
+categories = ["Food", "Transport", "Rent", "Entertainment", "Utilities", "Miscellaneous"]  # categories list
+label2 = Label(window,
+               text="Category: ",
+               font=("Arial", 12),
+               bg="#f4f4f9")
+label2.pack(pady=5)
+
+category = StringVar(window)
+category.set(categories[0])  # set default category to Food
+category_dropdown = OptionMenu(window, category, *categories)  # create drop-down menu
+category_dropdown.config(bg="#ffffff",
+                         font=("Arial", 12))
+category_dropdown.pack()
+
+label3 = Label(window,
+               text="Date (YYYY-MM-DD):",
+               font=("Arial", 12),
+               bg="#f4f4f9")
+label3.pack(pady=5)
+date = Entry(window,
+             font=("Arial", 12))
+date.pack(pady=5)
+
+output_label = Label(window,
+                     text="",
+                     font=("Arial", 12), bg="#f4f4f9", fg="green")  # label to display output in GUI instead of console
+output_label.pack(pady=5)
+
+total_label = Label(window,
+                    text="Total Expense: $0.00",
+                    font=("Arial", 12, "bold"),
+                    bg="#f4f4f9")  # label to display total expense
+total_label.pack(pady=10)  # add total expense label to window
+
+
+
+def filter_by_category():
+    selected_category = filter_category.get()  # get data from drop-down menu
+    file_name = "expenses.csv"
+    filtered_expense = []  # empty list to fill filtered expenses
+
+    if os.path.exists(file_name):
+        try:
+            with open(file_name, mode="r") as file:
+                reader = csv.reader(file)
+                next(reader)  # skip header row
+                filtered_expense = [row for row in reader if row[
+                    1] == selected_category]  # store filtered expense into list based on drop-down menu
+        except Exception as e:
+            messagebox.showerror("Filter Error", f"Unable to sort expenses by date: {e}")
+
+    total_filtered_expense = sum(
+        float(row[0]) for row in filtered_expense if row[0])  # convert amount to float and sum them up
+
+    filtered_window = Toplevel(window)  # open a new top level window
+    filtered_window.title(f"Expenses - {selected_category}")  # title for the new window based on category
+    filtered_window.geometry("400x300")  # window size
+
+    label5 = Label(filtered_window,
+                   text=f"Expenses for {selected_category}",
+                   font=("Arial", 12, "bold"))  # bold header label to indicate what category are displayed
+    label5.pack()
+    label6 = Label(filtered_window,
+                   text=f"Total for {selected_category}: ${total_filtered_expense:.2f}")  # display total expense for the filtered category
+    label6.pack()
+
+    for expense in filtered_expense:
+        Label(filtered_window,
+              text=f"${expense[0]} - {expense[1]} - {expense[2]}").pack()  # create label for each filter expense
+
+
+
+
+def validate_date(date_text):
+    # Check if the date is valid and follows YYYY-MM-DD format
+    try:
+        datetime.strptime(date_text, "%Y-%m-%d")  # ensure date is in correct format
+        return True
+    except ValueError:
+        return False
+
+
+def save_file(amount, cat, date_data):  # function to save data into csv
+    file_name = "expenses.csv"  # set file name
+    file_exists = os.path.exists(file_name)  # check if file exist
+    try:
+        with open(file_name, mode="a", newline="") as file:  # open file in append mode
+            writer = csv.writer(file)  # create writer object
+            if not file_exists:
+                writer.writerow(["Amount", "Category", "Date"])  # write column headers first if file does not exist
+            writer.writerow([f"{amount:.2f}", cat, date_data])  # write data into new row
+    except Exception as e:
+        messagebox.showerror("Save Error",
+                             f"An error has occurred while saving data: {e}")  # display error details if data failed to save
+
+
+def calculate_total_expense():  # function to calculate total expenses from CSV
+    file_name = "expenses.csv"  # file name to read
+    total = 0.0  # initialize a variable to store total expense
+
+    if os.path.exists(file_name):  # check if file exist
+        try:
+            with open(file_name, mode="r") as file:  # open file in read mode
+                reader = csv.reader(file)  # create writer object
+                next(reader)  # skip header row so that it will not be included in the calculation
+
+                for row in reader:
+                    if row and row[0] != "Total Expense":  # check if row is not empty and doesn't have "Total Expense" label
+                        try:
+                           total += float(row[0])  # convert value in "amount" row into float and add it to total
+                        except ValueError:
+                            # ignore rows that cannot be converted to float
+                            continue
+        except Exception as e:
+            messagebox.showerror("Read Error",
+                                 f"An error has occurred while reading the file: {e}")  # display error if file failed to read
+    return total
+
+
+def write_total_to_csv():
+    file_name = "expenses.csv"
+    total_expense = calculate_total_expense()
+    try:
+        rows = []
+        if os.path.exists(file_name):
+            with open(file_name, mode="r", newline="") as file:
+                reader = csv.reader(file)
+                for row in reader:
+                    if row and row[0] != "Total Expense:":
+                       rows.append(row)
+
+            # append the new total expense row at the bottom
+            rows.append(["Total Expense:", f"{total_expense:.2f}"])
+
+        with open(file_name, mode="w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(rows)
+
+
+    except Exception as e:
+        messagebox.showerror("Update Error", f"An error has occurred while updating total expense: {e}")
+
+def refresh_total_label():
+    total_expense = calculate_total_expense()  # recalculate the total expense
+    total_label.config(text=f"Total Expense: ${total_expense:.2f}")  # update the label
+
+
+def delete_expense():
+    file_name = "expenses.csv"
+    if not os.path.exists(file_name):  # check if file exist
+        messagebox.showerror("Error", "No expenses found to delete.")
+        return
+
+    delete_window = Toplevel(window)  # new top level window
+    delete_window.title("Delete Expense")  # window title
+    delete_window.geometry("400x300")
+
+    delete_label = Label(delete_window, text="Select an expense to delete:", font=("Arial", 12, "bold"))
+    delete_label.pack()
+
+    expense_listbox = Listbox(delete_window, width=50, height=15)
+    expense_listbox.pack()
+
+    with open(file_name, mode="r") as file:
+        reader = csv.reader(file)
+        rows = list(reader)  # convert data into list
+
+    for i, row in enumerate(rows[1:]):  # loop through all row, skipping the header row
+        expense_listbox.insert(i, f"${row[0]} - {row[1]} - {row[2]}")  # insert data into the listbox
+
+    def confirm_delete():
+        selected_index = expense_listbox.curselection()  # get index of current item in listbox
+        if not selected_index:  # if no item was selected
+            messagebox.showerror("Error", "Please select an expense to delete.")
+            return
+
+        del rows[selected_index[0] + 1]  # delete row for selected index (adding 1 to account for header row)
+
+        with open(file_name, mode="w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(rows)  # rewrite updated rows after deleting row back into the csv
+
+        messagebox.showinfo("Success", "Expense deleted successfully")
+        delete_window.destroy()  # close this window after deleting row
+        refresh_total_label()  # refresh displayed total expense
+
+    confirm_button = Button(delete_window, text="Delete Selected", command=confirm_delete)
+    confirm_button.pack()
+
+
+def add_expense():
+   #get data from their respective field
+   amount = expense.get()
+   cat = category.get()
+   date_data = date.get()
+
+   # check if amount or date field is empty
+   if not amount or not date_data:
+      messagebox.showerror("Input Error", "Please fill up all fields")
+      return
+
+   try:
+      amount = float(amount)  # conver amount to float
+      if amount <= 0:  # if amount = 0 or negative
+         raise ValueError("Amount must be positive")
+   except ValueError:  # if amount entered is something else like "abc"
+      messagebox.showerror("Input Error", "Please enter a valid positive number for expense amount")
+      return
+
+   if not validate_date(date_data):  # check if date is in correct format
+      messagebox.showerror("Input Error", "Please enter a valid date in the format YYYY-MM-DD")
+      return
+
+   save_file(amount, cat, date_data)
+
+   total_expense = calculate_total_expense()  # store total expense in total_expense
+   total_label.config(text=f"Total Expense: ${total_expense:.2f}")  # label to display total expense
+
+   write_total_to_csv()  # write total expense to csv
+
+   output_label.config(text=f"Expense of ${amount:.2f} added under the category, {cat}, on {date_data}",
+                    fg="green")  # display message in green when success
+
+   # clear the entry fields after adding expense
+   expense.delete(0, END)
+   date.delete(0, END)
+
+add_button = Button(window, text="Add Expense", font=("Helvetica", 12, "bold"), bg="#4CAF50", fg="white", command=add_expense, relief="raised", bd=3)  # create button for adding expense
+add_button.pack(pady=10)  # add button to window
+
+
+filter_category = StringVar(window)
+filter_category.set(categories[0])  # default category to food
+label4 = Label(window,
+               text="Filter by Category:",
+               font=("Arial", 12),
+               bg="#f4f4f9")
+label4.pack(pady=5)
+category_filter_dropdown = OptionMenu(window, filter_category, *categories)  # create drop-down menu
+category_filter_dropdown.config(bg="#ffffff", font=("Arial", 12))
+category_filter_dropdown.pack()
+
+
+filter_button = Button(window, text="Filter Expenses", font=("Arial", 12, "bold"), bg="#4CAF50", fg="white", command=filter_by_category, relief="raised", bd=3)  # create filter button
+filter_button.pack(pady=10)
+
+window.mainloop()  # keep the window running so that it will not close after adding expense
+
+            </code> </pre>
+        </div>
+       </div>
+     </div>
+
+<div class="code-container">
+       <button class="accordion-btn" onclick="toggleAccordion('3')">Hangman Game (C# , SQL)</button>
+        <div id="3" class="content">
+  
+        <p>Simple Hangman Game!</p>
+         <img src="images/hangman.jpg" alt="Hangman Game" style="width: 50%;">
+        <h3> Features </h3>
+        <ul> 
+           <li>Randomized word from Database</li>             <li>Tracked Attempts</li>
+           <li>Case-insensitive Guessing</li>
+        </ul>
+        <a href="https://github.com/CMingHwee/C-Sharp/tree/main/Hangman">View on GitHub</a>
+         <br><br>
+         <a href="javascript:void(0);" id="btn3" onclick="toggleCode('code3', this)">Click to Show Code</a>
+         <div id="code3" class="code-box">
+        <button class="close-btn" onclick="toggleCode('code3', document.getElementById('btn3'))">&times;</button>
+           <pre> <code class="language-csharp">
+using System;
+using Microsoft.Data.SqlClient;
+
+class HangmanGame
+{
+    static void Main()
+    {
+        string connectionString = "data source=DESKTOP-NSNRK1I;initial catalog=HangmanDB;TrustServerCertificate=True;trusted_connection=true"; //connect to database
+        string wordToGuess = GetRandomWordFromDatabase(connectionString); //get a random word from the database
+        string maskedWord = new string('_', wordToGuess.Length); //string of underscores equal to length of wordToGuess
+        int attemptsLeft = 6; 
+        bool isWordGuessed = false;
+        char[] guessedLetters = new char[wordToGuess.Length]; //track guessed letters
+        Console.WriteLine("Welcome to Hangman!");
+        Console.WriteLine("Try to guess the word, one letter at a time.");
+        Console.WriteLine($"The word has {wordToGuess.Length} letters.");
+
+        while (attemptsLeft > 0 && !isWordGuessed)
+        {
+            Console.WriteLine($"\nWord: {maskedWord}");
+            Console.WriteLine($"Attempts left: {attemptsLeft}");
+            Console.Write("Enter a letter: ");
+            char guess = char.ToLower(Console.ReadKey().KeyChar);
+            Console.WriteLine();//read key press and assign it to guess and then output a blank line for readibility 
+
+            if (wordToGuess.Contains(guess))
+            {
+                Console.WriteLine("Correct!");
+                for (int i = 0; i < wordToGuess.Length; i++)
+                {
+                    if (wordToGuess[i] == guess)
+                        guessedLetters[i] = guess;
+                } //reveal letter when guessed correctly
+            }
+            else
+            {
+                Console.WriteLine("Wrong guess.");
+                attemptsLeft--;
+            } //minus one attempt if guessed wrongly
+
+            maskedWord = UpdateMaskedWord(wordToGuess, guessedLetters);
+            isWordGuessed = !maskedWord.Contains('_');
+        }
+
+        if (isWordGuessed)
+        {
+            Console.WriteLine($"\nCongratulations! You guessed the word: {wordToGuess}");
+        }
+        else
+        {
+            Console.WriteLine($"\nGame Over! The word was: {wordToGuess}");
+        }
+    }
+
+    static string GetRandomWordFromDatabase(string connectionString)
+    {
+        string randomWord = string.Empty;
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            string query = "SELECT TOP 1 Word FROM Words ORDER BY NEWID()"; //sort words by random order and then selecting the top result
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    randomWord = reader["Word"].ToString(); //retrieve Word and assign to randomWord
+                }
+            }
+        }
+
+        return randomWord.ToLower(); //ensure the word is lowercase for comparison
+    }
+
+    static string UpdateMaskedWord(string word, char[] guessedLetters)
+    {
+        char[] updatedMaskedWord = new char[word.Length];
+
+        for (int i = 0; i < word.Length; i++)
+        {
+            updatedMaskedWord[i] = guessedLetters[i] == '\0' ? '_' : guessedLetters[i]; //turn unguessed  letters into underscores
+        }
+
+        return new string(updatedMaskedWord);
+    }
+}
+
+            </code> </pre>
+        </div>
+       </div>
+     </div>
+</section>
+
+<section id="certificates">
+<h2>Certificates</h2>
+<p>
+<img src="images/os.jpeg" alt="Windows OS certificate"> <br>
+Microsoft Operating System Fundamentals
+</p>
+<p>
+<img src="images/network.jpeg" alt="Networking Certificate"> <br>
+Networking Fundamentals
+</p>
+</section>
+  
+
+
+<section id="contact">
+      <h2>Contact</h2>
+      <p>Email me at: <a href="mailto:chuaminghweesg@gmail.com">chuaminghweesg@gmail.com</a></p>
+</section>
+ 
+  
+     
+<footer>
+  <p>Designed and built by Chua Ming Hwee</p>
+  <div>
+    <a href="https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav" target="_blank">LinkedIn</a> |
+    <a href="https://github.com/CMingHwee" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
